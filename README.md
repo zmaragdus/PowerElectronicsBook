@@ -47,3 +47,7 @@ Shading and colors should be chosen to accommodate most color-blind individuals.
 Text embedded in images should be Arial 10pt font. Common modifications of bold, italics, underline, superscript, and subscript are acceptable by default.
 
 Images should be original and/or fall under a CC BY-SA license. Others must be reviewed / approved for inclusion. Proper citations will be included.
+
+## License
+
+The license for this project will be CC BY-SA 4.0
