@@ -1,1 +1,34 @@
 \section{Book List}
+
+While this book is meant to provide a fairly comprehensive education in the field of power electronics, it is ultimately a summarization of a wide variety of topics. Each section alone could have an entire book dedicated to the study of that one topic. Here are a few recommended texts. If you had to acquire half a dozen books to cover the topics of power electronics, here are some good choices.
+
+\underline{The Six Books You'll Need to Survive Power Electronics}
+
+\begin{itemize}
+\item \emph{Power Supply Design Vol. 1, by Ray Ridley} - If there was only one book to have about how to get a power supply designed and running, this is it. It's a thin book, not going into incredible detail on anything, but it will get you a working converter. It also lays the foundation for a lot more complex analysis and design of converters, specifically in how it gives instructions for measuring the performance of filters and controls, as well as the rule-of-thumb on how to set up the control loops.
+
+\item \emph{Designing Control Loops for Linear and Switching Power Supplies, by Christophe Basso} - This has very few details about converters themselves, but it is an incredibly-useful book for the control loops. If you have to deal with setting up control systems for power supplies, this should be the first book you pick up. Basso provides a wealth of information about many different control schemes, both going through the detailed derivation of the entire control transfer functions, then summarizing them all in a set of compact equations because you're on a time crunch and going through the derivation bores you. (But seriously, the derivation is excellent.)
+
+\item \emph{Switch-Mode Power Supplies, by Christophe Basso} - This is the counterpart book to the control book. The subtitle is ``SPICE Simulations and Practical Designs,'' and while people get caught up in the SPICE simulation part (of which there is admittedly an abundance), it does have a serious amount of material on the ``practical designs'' portion. Couple this with the control book and you'll have a powerful combination.
+
+\item \emph{Electromagnetic Compatibility Engineering, by Henry Ott} - I've heard several people from different companies this ``The EMC Bible,'' and it rightly deserves that title. Someone (I think Lee Hill of Silent Solutions) once called EMC ``everything that happens in a circuit that is not on the schematic.'' Others may call it ``black magic.'' Regardless of what you call it, the effects of electromagnetic interference are very real and can have a serious impact on your circuit or even other circuits nearby. Half of this book should be required reading for a practicing power electronics engineer (or any electronics engineer, for that matter).
+
+\item \emph{High-Speed Digital Design: A Handbook of Black Magic, by Johnson and Graham} - This is a good counterpart to Ott's EMC book. It deals more heavily with signals, and provides a veritable cornucopia of experimental results. That way you can literally \emph{see} what happens when certain things are done. Some smart-aleck young engineers may go, ``but this is a book about digital stuff; we're in the analog domain.'' Well, that's the entire point of the book. At high enough speeds, digital is really analog. And while the rule of thumb for ``high-speed'' is usually 5-10MHz, the \underline{edge rates} of power electronics can easily meet that criteria. Plus, circuits operating at 5-10MHz are definitely ``high-speed,'' but slower circuits will start to partially act like high-speed circuits at less than a tenth of that frequency.
+
+\item \emph{Practical Power Supply Design, by Ron Lenk} - There are a few things that are mildly controversial (calling a boost converter a ``non-isolated flyback converter'' and advocating for splitting ground planes are two examples, respectively). That being said, he has a serious bent towards the ``practical'' term in the book's title. This book is a great follow-up to someone who just got out of school and needs to learn how \underline{real} electronics work. He provides excellent information yet maintains a good ``human touch'' to it all. As a bonus, his book is available on IEEExplore and is almost certainly freely available if your organization has a site-wide subscription to IEEE.
+
+\end{itemize}
+
+Here are some extra books that are worth looking into should you have the spare time and money.
+
+\begin{itemize}
+
+\item \emph{Fundamentals of Power Electronics by Erickson and Maksimovic} - Tons and TONS of information, but rather tough to work through.
+
+\item \emph{Grounds for Grounding by Joffe and Lock} - See especially Chapter 9 for PCB-related topics. Available on IEEExplore.
+
+\item \emph{EMC and the Printed Circuit Board by Mark Montrose} - If it seems like the EMC aspect of power converters is being hammered a lot, it's because it is. It's one of the most neglected aspects of power converter design, and is the root cause of many a problem that goes unaddressed until the last minute. Available on IEEExplore.
+
+\item \emph{Designing Analog Chips by Hans Camenzind} - This is the guy who invented the 555 timer. More importantly, his book is available online as a free PDF. Useful to learn what's going on inside the IC package.
+
+\end{itemize}
