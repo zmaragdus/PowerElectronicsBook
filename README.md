@@ -38,7 +38,7 @@ All images will be converted to .png files for inclusion in the book.
 
 All graphical units will be in metric
 
-Default line widths will be 0.1mm for regular elements, and 0.3mm for “emphasis” elements (e.g. a rectangular outline, representing a complex system and/or containing other sub-elements)
+Default line widths will be 0.1mm for regular elements, and 0.4mm for “emphasis” elements (e.g. a rectangular outline, representing a complex system and/or containing other sub-elements)
 
 It is strongly recommended to snap elements to the nearest millimeter grid. The template will reflect this.
 
