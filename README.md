@@ -17,7 +17,7 @@ At some point, admittedly, the student will need to access advanced tools to con
 All software used to create this should be FOSS-compliant.
 *KiCAD – circuit diagrams and PCB examples
 * GNU Octave – general technical computation, frequency analysis
-* MikTek – writing tool, using pdfLaTex only (this may change to include bibliography tools)
+* TeXworks – writing tool, using pdfLaTex only (this may change to include bibliography tools)
 * InkScape – graphics
 * LTSpice – this is admittedly a departure from the standing rule of FOSS-compliance. While there are alternative tools that can be combined to create the desired effect, no other tool is as powerful and versatile. LTSpice is not open-source, but it is free and widely available. Alternatives may be considered, but as of now (2019-June-28), use of LTSpice for circuit simulation is acceptable.
 * Github – repository for all materials
