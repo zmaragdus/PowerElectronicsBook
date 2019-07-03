@@ -1,0 +1,44 @@
+\section{Convolution And Laplace Transforms}
+
+If you are wondering where all these ``s'' terms are coming from and why they're used, then here is a brief digression on Laplace Transforms.
+
+In the time domain, Equation \ref{convolution_def} gives the mathematical expression for what you get as an output $y(t)$ for a particular input $x(t)$ and system $h(t)$.
+
+\begin{equation}
+x(t) * h(t) = y(t) = \int^\infty_{-\infty}x(t-\tau)h(\tau)d\tau
+\label{convolution_def}
+\end{equation}
+
+(Note that the star operator $*$ as used here does not mean multiplication, but convolution.) On a conceptual level, it is what happens when you ``sweep'' the input signal function through the system function and integrate the intersection of areas for each time step $d\tau$. Doing that integral by hand is a mess, though you will come out in the end with a time-domain function for what the output signal will be. This process is highy-simplified by moving everything from the time domain into the frequency domain.
+
+The Laplace Transform, named after Pierre Simon Laplace, takes a given time-domain function $f(t)$ and converts it into a frequency-domain function $F(s)$ \footnote{$s=j\omega$, where $\omega$ is frequency in radians and $j = \sqrt{-1}$, since electrical engineers use $i$ for current and not imaginary numbers.}:
+
+\begin{equation}
+F(s) = \int^\infty_0 f(t)e^{-st}dt
+\label{laplace_def}
+\end{equation}
+
+Again, these integrals are not the easiest to do by hand, and require some manipulation based on complex number identities. Fortunately again, tables of common signal transformations are widely available. Not only can the Laplace transform be used to convert signals from time domain to frequency domain, you can exploit the properties of frequency-domain functions to simplify common mathematical operations like integration, derivation, and especially convolution.
+
+A few identities and properties most relevant to power electronics are given below in Table \ref{laplace_list}. Full Laplace Transform tables and properties can be found elsewhere. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l}
+Time Domain & Frequency Domain & Description \\
+\hline
+$\delta (t)$ & $1$ & Impulse Function\\
+$e^{at}$ & $\frac{1}{s-a}$ & Exponential \\
+$sin(kt)$ & $\frac{k}{s^2+k^2}$ & Sine Wave\\
+$te^{at}$ & $\frac{1}{(s-a)^2}$ & Time-Ramped Exponential\\
+$e^{at}f(t)$ & $F(s-a)$ & Multiply By Exponential\\
+$\delta(t-t_0)$ & $e^{-st_0}$ & Time-Shift\\
+$f'(t)$ & $sF(s) - f(0)$ & Derivation\\
+$\int f(t)dt$ & $\frac{1}{s}F(s)$ & Integration\\
+$\int^t_0 f(x)g(t-x)dx$ & $F(s)G(s)$ & Convolution\\
+
+\end{tabular}
+\caption{Selected Laplace Transforms and Identities}\label{laplace_list}
+\end{table}
+
+Especially look at the last item in the list: convolution changes into simple multiplication. Also, gain scaling is preserved across the Laplace conversion. Regarding derivation, you can often ignore the constant expression in practical applications.

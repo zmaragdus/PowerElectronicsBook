@@ -1,0 +1,82 @@
+\section{Basic Properties}
+
+As mentioned in the introduction, it is assumed that you have a basic introduction to electronics. However, the topic of linear systems is so incredibly important as a foundation for power electronics that this chapter will provide a brief review of linear systems. A dedicated textbook for linear systems should be consulted for a comprehensive education on the topic.
+
+Think of a linear system in the abstract. Here's a box, representing a linear system. Stuff gets shoved into the box, and comes out the other end looking different.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1.0]{linear_box.png}
+\caption{A box. I mean, a linear system.}\label{abox}
+\end{figure}
+
+This box has only one input and one output, but other systems can have multiple inputs and outputs. Linear systems have a couple properties that make them nice and predictable. If they're predictable, you can use some mathematical manipulation and analysis on them:
+
+\begin{itemize}
+\item \emph{Gain Scaling} - If you take a given input / output combination and scale the gain of the input up, the same gain should show up on the output. If you stick a ``1'' in the front and get a ``3'' back out, then sticking in a ``2'' will produce a ``6.''
+\item \emph{Time Delay} - For a given signal-in / signal-out pair, if you instead delay the input signal by 2 seconds, then the output will be delayed by 2 seconds as well.
+\item \emph{Sine Wave In, Sine Wave Out} - Stick a sine wave into the system, and you'll get a sine wave out. It may have different amplitude and phase relative to input, but it'll be a sine wave with the same frequency. This is actually one of the key points about linear systems that will be heavily exploited later: gain and phase shift. (See Figure \ref{s_in_s_out}. The blue trace is the input signal to a transfer function, and the red trace is the resulting output.)\footnote{The specific transfer function is $H(s) = \frac{1}{s+2}$, and the input is a simple sine wave $sin(t)$.}
+
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{sine_in_sine_out.png}
+\caption{Sine Wave Goes In, Sine Wave Comes Out}\label{s_in_s_out}
+\end{figure}
+
+Now, to be fair, many aspects of power converters are not linear. There's no getting around that. But \emph{within a certain band of operating conditions} they do act pretty linear. That lets us set up linear equations to describe how the system works in said operating region and make predictions about how it will behave.
+
+Linear systems are traditionally represented by transfer functions. One simple example of a low-pass filter with zero DC gain and a corner frequency of about 3.18Hz is found in \ref{simple_LPF}.
+
+\begin{equation}
+G(s) = \frac{20}{s+20}
+\label{simple_LPF}
+\end{equation}
+
+The transfer function describes, mathematically speaking, what happens to a signal that's supplied to the function.\footnote{With transfer functions, remember that $s = j\omega$, where $j = \sqrt{-1}$ and $\omega$ is frequency in rad/sec.} Because everything can be represented by a series of sinusoids\footnote{See the works of Joseph Fourier.}, it is useful to think of how a given sinusoid is shifted in both magnitude and frequency. This is commonly referred to as "gain" and "phase." Sparing a lot of details, for a sinusoid of a given frequency $\omega$, the transfer function imparts a specific gain shift and phase shift on the input sinusoid to create the output sinusoid. 
+
+\begin{equation}
+\big| \big| G(s) \big| \big| ~~~ and ~~~ \angle G(s) 
+\end{equation}
+
+The gain is the complex magnitude of the transfer function, and the phase shift is the complex angle\footnote{Or ``argument,'' if you will}. For convenience's sake, gain is almost always mathematically transformed into decibels, and phase is referred to in degrees. Plugging a few numbers into the transfer function given previously in Equation \ref{simple_LPF} results in the gain/phase values in Table \ref{manual_bode}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|cc}
+$\omega$ & Equation & Gain (dB) & Phase (deg) \\
+\hline
+0 & $\frac{20}{j0 + 20}$ & 0 & 0 \\
+1 & $\frac{20}{j + 20}$ & -0.01 & -2.86 \\
+5 & $\frac{20}{j5 + 20}$ & -0.26 & -14.04 \\
+10 & $\frac{20}{j10 + 20}$ & -0.97 & -26.57 \\
+20 & $\frac{20}{j20 + 20}$ & -3.01 & -45.00 \\
+30 & $ \frac{20}{j30 + 20}$ & -5.12 & -56.31 \\
+50 & $\frac{20}{j50 + 20}$ & -8.60 & -68.20 \\
+100 & $\frac{20}{j100 + 20}$ & -14.15 & -78.69 \\
+150 & $\frac{20}{j150 + 20}$ & -17.58 & -82.40 \\
+200 & $\frac{20}{j200 + 20}$ & -20.04 & -84.29 \\
+\end{tabular}
+\caption{Manual Phase/Gain Calculations}\label{manual_bode}
+\end{table}
+
+Graphing the gain and phase of a transfer function is called making a ``Bode plot.'' Doing all that by hand is not fun. Fortunately, we have computers to do tedious math and make pretty pictures in the process. With two simple commands in GNU Octave, you can get a nice graph of the transfer function from Equation \ref{simple_LPF} in the form of Figure \ref{simple_LPF_bode}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{simple_LPF.png}
+\caption{Simple Low-Pass Filter}\label{simple_LPF_bode}
+\end{figure}
+
+Here you can see the behavior of the system in much more detail. A few things become apparent:
+
+\begin{itemize}
+
+\item There's a specific frequency around which ``things happen.'' This is often called the corner frequency, or bandwidth, or frequency location\footnote{Example of the latter: when referencing the location of poles and zeros in a transfer function, you could say ``the double pole at 37kHz and the zero at 5kHz.'' This is how you'll most often use the term in designing power converters and their control systems.}. For this system, the corner frequency is 20 rad/sec, or approximately 3.18Hz.
+\item At the corner frequency, the gain starts shifting. In this case, it starts decreasing at about -20dB / decade.
+\item Starting one decade lower than the corner frequency, the phase starts shifting noticeably. At the corner frequency, it is $45^{\circ}$ off from the original (in this case, $-45^{\circ}$). At one decade higher than the corner frequency, it has mostly stabilized around $90^{\circ}$ off from original.
+
+\end{itemize}
+
+All this is because of that pesky $s$ term. The complex portion of the transfer function changes with frequency. At low frequency, all the $s$ terms basically go away. At middling frequencies, there's a sort of balance between real and complex portions of the transfer function. At high frequencies, the complex terms dominate.

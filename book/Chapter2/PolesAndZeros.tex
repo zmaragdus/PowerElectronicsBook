@@ -1,0 +1,37 @@
+\section{Poles and Zeros} % ---------------------------------------------
+
+With transfer functions introduced, I want to spend a little more time describing poles and zeros. ``What do you mean `poles and zeros'?'' you may ask. What most people mean with poles and zeros are the polynomial roots of the denominator and numerator (respectively) of a transfer function.
+
+\begin{equation}
+G(s) = \frac{s+10}{s(s^2+5s+6)}
+\label{pz_func_example}
+\end{equation}
+
+Take the transfer function represented by Equation \ref{pz_func_example}. There are several values of $s$ that result in the numerator or denominator equalling zero. For the numerator, when $s = -10$ the transfer function will equal zero (due to the numerator being zero). This value of -10, by no coincidence, is a ``zero'' of the transfer function $G(s)$.
+
+Additionally, there are multiple values of $s$ that would result in the denominator being zero. Those values are 0, -2, and -3. Now, if we call the top roots ``zeros'' because the transfer function goes to zero, we \emph{don't} call the roots that cause it to go to infinity ``infinities'' or ``divides by zero.'' Instead, imagine a 3D surface, with the two ``flat'' axes being the real and imaginary axes, and the ``height'' being the magnitude. The general shape around one of the denominator roots kind of resembles a tent with a big center pole going upward to infinity (because the function is some number divided by zero). So the thing that causes the tent shape is a ``pole.'' I didn't make this up; just roll with it and call the denominator roots ``poles'' and everything will be fine.
+
+On a side note, there's no reason we cannot make a Bode plot of the transfer function in Equation \ref{pz_func_example}. That's given below in Figure \ref{pz_ex_bode}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{pz_example_bode.png}
+\caption{Bode Plot for TF in Equation \ref{pz_func_example}}\label{pz_ex_bode}
+\end{figure}
+
+Go back to Equation \ref{pz_func_example} and think about the numerator. As $s$ changes, how does the gain and phase of just that term change? When $s$ is small, the fixed ``10'' dominates the gain, with no phase shift. As $s$ increases, both the gain and the phase shift increase. A similar thought process can be done with the denominator. Remember that all the terms are "acting" on the TF's total gain and phase shift at all times.
+
+Take the generic form of a pole or zero (pulled out of the transfer function and set up on its own):
+
+\begin{equation}
+\bigg(\frac{s}{\omega_0} + 1\bigg)
+\end{equation}
+
+The frequency $\omega_0$ is called the ``corner frequency,'' ``3dB frequency,'' or just ``frequency'' of the respective pole or zero. (This might not be a real number for a root with complex solutions.) There are two key points to keep in mind with respect to this frequency (mentioned in passing previously, but reiterated here because they're important):
+
+\begin{itemize}
+\item At the corner frequency, the gain of that specific pole/zero starts shifting by 20dB / decade. (At the corner frequency, it has already shifted by 3dB, but it starts majorly shifting here.)
+\item At one tenth the corner frequency, the phase shift contribution of that specific pole/zero starts becoming noticeable. At the corner frequency, it has shifted $45^{\circ}$. At ten times the corner frequency, the phase shift has mostly stabilize at $90^{\circ}$.
+\end{itemize}
+
+The direction of the phase or gain shifts depend on the form of the pole or zero. Typically, poles cause a negative shift in phase and gain, and zeros cause a positive shift in phase and gain. (Looking backwards, Figure \ref{simple_LPF_bode} is the graph of a pole with a corner frequency of 3.18Hz.) There are a few exceptions to this, such as a ``right-hand-plane zero,'' but that'll be covered later.

@@ -6,8 +6,8 @@
     4. Equipment List
 2. Linear Systems Review
     1. Basic Properties
-    2. Complex Numbers
-    3. Laplace Transforms & Convolution
+    2. Poles And Zeros
+    3. Convolution And Laplace Transforms
     4. Frequency Domain
     5. Feedback
     6. Exercises
