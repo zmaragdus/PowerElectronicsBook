@@ -1,1 +1,69 @@
 \section{Equipment List}
+
+The possible spectrum of equipment for doing power electronics development and evaluation starts small and ranges to a suite worth a hundred thousand dollars \footnote{US Dollars, 2019} or more. The list below is aimed at providing a comprehensive suite of equipment for as reasonable a cost as possible.
+
+
+\subsection{Hand Tools} % --- SUBSECTION: HAND TOOLS ---
+
+As you gain more and more experience with power electronics, you'll find yourself buying more tools over time. The below list is a reasonable starting point.
+
+\begin{itemize}
+\item \emph{Needlenose Pliers} - Make sure to get ones with a rather fine point. Common needlenose pliers found in a hardware store's ``Hand Tools'' section are still too large. Look for ones in the ``Electrical'' section or get electronics-specific ones online.
+\item \emph{Wire Cutters} - Like needlenose pliers, wire cutters meant for electronics tend to be smaller. It helps to get ones with a flush side (vs. curved) for cutting wires and leads very close to the circuit board. Being smaller, they shouldn't be used to cut large wire sizes or they may break.
+\item \emph{Wire Strippers} - Most power electronics will have wire sizes up to 12AWG for serious power and down to 24AWG for small signals. You may occasionally have use for even smaller wire for fine-detail PCB rework or transformer windings. These come with integrated cutters for larger wire sizes.
+\item \emph{Tweezers} - Get a few pair: regular, curved, ultra-fine point, and reverse (where squeezing the tweezers opens them, not closes them). Serrated tips tend to make components wobble a small amount, so get smooth-tip versions.
+\item \emph{Knife} - An Exacto knife or even small box cutter will work well for miscellaneous things.
+\item \emph{Screwdrivers} - Both regular size and precision screwdrivers will be used at various points, so get both.
+
+\end{itemize}
+
+\subsection{Soldering} % --- SUBSECTION: SOLDERING ---
+
+A basic soldering setup can be had for a few hundred dollars, while an extensive system for full PCB rework can cost up to ten thousand dollars and beyond. This list will be split into two parts: basic and advanced.
+
+\underline{Basic}
+
+\begin{itemize}
+\item \emph{Soldering Iron} - You will absolutely want an iron with variable power and closed-loop control (i.e. set a temperature and it regulates to that temperature, as opposed to ``power level 4''). A unit with interchangeable tips is incredibly useful, as some applications will call for fine-detail work and others will require lots of heat to be applied. A good generic size is a small chisel tip about 1mm wide. An integrated iron holder is crucial.
+\item \emph{Vise} - It is important to have a vise or some sort of clamp to hold the items you're working on. Those ``magnifying glass with two little grabbers'' aren't nearly sturdy enough to do serious PCB work. Get a larger unit, preferrably with rubber cushions for gentle board handling.
+\item \emph{Sponge \& Brass Wool} - These items are for cleaning off the soldering iron tip between uses. Some use just one of the two, some use both. The sponge is good for reusability, while the brass wool does a better job of cleaning off scale and grime.
+\item \emph{Solder} - Getting small-gauge solder wire (under 0.5mm diameter is a good choice) will allow for fine detail work, and isn't really a hinderance for larger soldering work (e.g. soldering two large stranded wires together). Tin-lead alloys are most common and easiest to use. Lead-free solder is also readily available. Solder wire that comes with a core of flux (``flux-cored solder'') helps with ease-of-use.
+\item \emph{Flux} - When soldering components and/or PCBs, there is usually a layer of oxidization and other contaminants on the surfaces that inhibit good soldering. Flux is a substance that chemically removes these. While the solder may have a core of flux, it usually isn't as effective as applying extra flux. A small bottle or chemical pen of flux will help greatly. Flux comes in various strengths: no-clean flux doesn't require extra work, but the activated fluxes do a better job of facilitating soldering.
+\item \emph{Isopropyl Alcohol} - Alcohol does a good job of removing flux and other contaminants. It can be applied with either plastic brushes or cotton swabs. There is also dedicated flux remover spray, but that tends to be rather expensive in the long run and generally not worth it unless you're producing boards for sale to customers.
+\item \emph{Magnifying Glass} - For inspection of your handiwork, a magnifying glass is crucial. Even more than a small 2x handheld unit, a 10x jewelers loupe works incredibly well for fine-detail inspection. If you need magnification during the soldering process, a glass on a mechanical arm is useful.
+\end{itemize}
+
+\underline{Advanced}
+\begin{itemize}
+\item \emph{Board Heater} - This is a heat unit that sits underneath a PCB and warms it from below. This is useful for bringing the PCB up to a higher temperature for easier soldering of components to large areas of board copper.
+\item \emph{Hot Air Pencil} - A hot-air pencil is invaluable for delicate soldering / desoldering of surface-mount components. Ideally, the unit would have a self-contained air pump, variable heat, and variable air speed. Some units come with a variety of nozzles for spraying air in different patterns. A generic circular nozzle will work well for most applications.
+\item \emph{Soldering Tweezers} - While a hot air pencil will work well enough for most desoldering situations, soldering tweezers may be useful for extracting a single small component amidst a collection of other components you want to leave in place.
+\item \emph{Stereo Microscope} - Instead of a single magnifying glass on an arm, this unit is closer in form and function to a two-eyepiece microscope. A magnifying power of 10x-25x is common and readily usable.
+\item \emph{Solder Paste Dispenser} - For surface-mount reflow soldering, you could manually dispense solder paste with a hand syringe. However, this method is prone to error with all the actions you need to perform simultaneously. A pneumatic unit will dispense solder paste in a highly-controlled manner. Good units will have a variable dispensing setting and a foot pedal to trigger dispensing.
+\item \emph{Soldering Oven} - This can actually be implemented as a toaster oven with a special control unit hacked in\footnote{Doing this would actually be a good introductory project.}, or you could buy a dedicated reflow oven for a lot more money. For soldering small amounts of components, a board heater and a hot air pencil set on low air flow will work reasonably well.
+\end{itemize}
+
+\subsection{Test Equipment} % --- SUBSECTION: TEST EQUIPMENT ---
+
+This is the place where you can spend the most money and go down the figurative rabbit hole of high-end and esoteric test equipment for many tens or thousands of dollars. If you're willing to take on a little bit of risk, purchasing used test equipment can save you a large amount of money.
+
+Like the soldering equipment, this list will be broken up into two sections: basic and advanced. Some recommendations will be made for the make and model of specific items; these are to be taken as just recommendations, since other versions can serve just as well.
+
+\underline{Basic}
+
+\begin{itemize}
+\item \emph{Multimeter} - Get a multimeter that can at least measure voltage, current, and resistance. Other useful features include measuring diodes, capacitors, and temperature. Get a ``True RMS'' unit to accurately measure non-sinusoidal currents and voltages. It is also recommended to get one with CAT III or CAT IV protection\footnote{This is a measure of how well the multimeter will tolerate certain fault conditions. Higher levels of protection generally mean that the meter is less likely to ``blow up'' in your hand.}.
+\item \emph{Power Supply} - There are many, many, \underline{many} different types of power supplies. What your work focuses on will determine your power supply needs. For simple low-voltage learning work, you could even repurpose a USB cable to serve as a 5V / 100mA power supply\footnote{To do this, just put one 15k$\Omega$ resistor to ground on each data line, then the upstream supply should provide up to 100mA on the port's power lines.}. Spare wall-wart chargers can be repurposed into power supplies, but be wary of ones that have poor voltage regulation or non-existent protection features. Serious benchtop supplies come in switching and linear versions. Most switching ones are fine unless you specifically need low noise or fast load response.
+\item \emph{Function Generator} - A basic unit that can generate a variable-frequency square wave, sine wave, and triangle wave can cover a large portion of basic needs. If you are very frugal and inventive, you could create the entire circuit with a 555 timer and some amplifiers. You can also find used function generators of decent quality, capability, and price.
+\item \emph{USB Oscilloscope / Analyzer} - This is one of the items that is on the border of ``you should just upgrade to serious equipment.'' For the hobbyist or student, small USB-based oscilloscopes and logic analyzers provide an opportunity for entry-level work at a serious cost savings. Common items in this category are the ADALM1000 / 2000 from Analog Devices, the Logic series from Saleae, the Digital Discovery unit from Digilent, standard scopes from Hantek, and more. Key specifications to pay attention to are dynamic range, sampling rate, and voltage range.
+\item \emph{Breadboard} - It is a good practice to test logic and control circuits by themselves before building an entire unit. Breadboards will greatly facilitate this. Be aware of their limitations regarding maximum current and high-speed signal integrity.
+\end{itemize}
+
+\underline{Advanced}
+
+\begin{itemize}
+\item \emph{Oscilloscope} - These can range from simple 70MHz 2-channel Rigol scopes for under \$1k to a behemoth scope running 4 channels at 50GSa/sec for \$100k. In general, pick a scope with a sampling rate of about 20 times greater than the fastest signal you need to observe. Many newer oscilloscopes are Windows-based, but some of the older or lower-end models have a custom kernel. The latter tend to be a lot more responsive, if more limited in functionality and interface.
+
+\end{itemize}
+
+

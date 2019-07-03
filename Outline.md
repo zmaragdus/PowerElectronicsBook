@@ -72,3 +72,4 @@
     2. Chained Buck-Boost
     3. Cuk Converter
     4. SEPIC Converter
+A. Laplace Tables
