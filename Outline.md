@@ -21,7 +21,7 @@
     7. Exercises
 4. Semiconductors
     1. Basic Theory
-    2. pn junctions (Diodes)
+    2. pn Junctions (Diodes)
     3. Bipolar Transistors
     4. Field-Effect Transistors
     5. Advanced Devices
