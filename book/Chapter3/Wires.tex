@@ -1,32 +1,54 @@
 \section{Wires}
 
-On a schematic a wire is a perfect conductor. Electricity flows without loss or degredation. (To be fair, scientists are working on superconductor technology that mimics this behavior. Currently, such systems are limited to conditions that include cooling the materials to incredibly cold temperatures.)
+On a schematic a wire is a perfect conductor. Electricity flows without loss and signals experience no degredation. (To be fair, scientists are working on superconductor technologies that mimic this behavior. Currently, such systems are limited to conditions that include cooling the materials to incredibly cold temperatures.)
 
-The most basic parasitic effect of wires is resistance. Copper, the most common wiring material, has a resistivity of $1.68 \dot 10^{-8} \Omega m$. The next most common wiring element, aluminum, is over 50\% more resistive, but is lighter and cheaper. Silver is actually the most conductive element, beating copper by about 5\%, but is expensive and tarnishes easily. Gold is on par with aluminum for resistance, but has excellent anti-corrosion properties and thus is heavily used in connectors that get exposed to air.
+The most basic parasitic effect of wires is resistance. Copper, the most common wiring material, has a resistivity of $\rho = 1.68 \dot 10^{-8} \Omega m$. The next most common wiring element, aluminum, is over 50\% more resistive, but is lighter and cheaper. Silver is actually the most conductive element, beating copper by about 5\%, but is expensive and tarnishes easily. Gold is on par with aluminum for resistance, but has excellent anti-corrosion properties and thus is heavily used in connectors that get exposed to air.
 
-When the term ``wire'' is used here, you may often think of a simple cylinder of copper in a plastic sheath that is found in the walls. In truth, all these principles apply to any metal that is used to carry current from one point to another, including PCB traces, component leads, circuit chip bond wires, and more.
+When the term ``wire'' is used here, you may often think of a simple cylinder of copper in a plastic sheath that is found in the walls. In truth, all these principles apply to any conductor that is used to carry current from one point to another, including PCB traces, component leads, circuit chip bond wires, and more.
+
+\subsection{Skin Effect}
 
 The resistance values mentioned above are with regards to DC current. AC current is another matter: as the frequency of the current through a conductor increases, the current tends to cluster at its outside edges. This reduces the effective amount of metal that the current is flowing through, and increases the effective resistance. Figure \ref{skin_depth}\footnote{Image is in public domain. Created by Wikipedia user ``Biezl'' on 2008-July-27.} shows how high-frequency current mostly flows through the outer portion of a conductor (darker red shading is more current density).
 
-
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{skin_depth.png}
+\includegraphics[scale=0.35]{skin_depth.png}
 \caption{Skin Depth for HF Current}\label{skin_depth}
 \end{figure}
 
-The reason for this is how electrical current creates magnetic fields, and then magnetic fields oppose the flow of current. At its most basic level, current through a wire creates a magnetic field perpendicular to and surrounding the wire. See Figure \ref{wire_mag_field} for a simplified diagram of this effect; electrical current is in blue and magnetic flux is in red.
+The reason for this is how electrical current creates magnetic fields, and then those magnetic fields induce circular currents which oppose the flow of current in the wire. At its most basic level, current through a wire creates a magnetic field perpendicular to and surrounding the wire. See Figure \ref{wire_mag_field} for a simplified diagram of this effect; electrical current is in red and magnetic flux is in blue. Look up the ``right-hand rule'' for an easy way to determine the direction of the magnetic field given the current (or vice versa).
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{wire_mag_field.png}
+\includegraphics[scale=2]{wire_mag_field.png}
 \caption{Wire Current and Magnetic Field}\label{wire_mag_field}
 \end{figure}
 
-This same effect happens throughout the cross-section of a wire carrying AC current. AC current through one portion of the wire creates a magnetic field that affects the current in surrounding portions. The magnetic field increases the effective resistance of the wire (really, complex reactance). Magnetic fields on the outer edge of the conductor (see Figure \ref{skin_fields}\footnote{Image is in public domain. Created by Wikipedia user ``Biezl'' on 2008-July-27.}) permeate into the air and thus have less strength than those in the middle.
+This same effect happens throughout the cross-section of a wire carrying AC current. AC current through one portion of the wire creates a magnetic field. That same field induces currents that oppose the flow of the main current in the middle of the wire, but assist the flow of current in the outer edges of the wire. An illustration of this is given in Figure \ref{skin_fields}\footnote{Image is in public domain. Created by Wikipedia user ``Biezl'' on 2008-July-27.}, with current in red and magnetic fields in blue.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{skin_effect_fields.png}
+\includegraphics[scale=0.35]{skin_effect_fields.png}
 \caption{Magnetic Fields In Wire}\label{skin_fields}
 \end{figure}
+
+Skin depth has a few major influencing factors. The general equation is given below (Eqn. \ref{skin_depth_eqn}). As for the terms, $\rho$ is the resistivity of the conductor, $\omega$ is the electrical frequency in radians, $\mu$ is the conductor's magnetic permeability, and $\epsilon$ is the permittivity.\footnote{Note that both the permittivity and permeability terms are products of the relative term and the free-space term. Example: $\mu = \mu_r \mu_0$.}
+
+\begin{equation}
+\delta = \sqrt{\frac{2\rho}{\omega\mu}}\sqrt{\sqrt{1+(\rho\omega\epsilon^2)}+\rho\omega\epsilon}
+\label{skin_depth_eqn}
+\end{equation}
+
+As is customary, this equation is a mess. Fortunately, there's a handy simplification. At frequencies far below $\frac{1}{\rho\epsilon}$, you can ignore that double-square-root term  (leaving just the single square root term on the left). There are a few observations to make about both the full equation and its reduction.
+
+Skin depth varies with the inverse square root of permeability. Non-ferromagnetic materials have negligible relative permeability, but ferromagnetic materials have huge permeabilities. This drastically decreases the skin depth (increasing impedance). Iron, for example, has a skin depth of less than a quarter millimeter at only 60Hz. 
+
+Regarding the reduced equation, for good conductors like copper, the reduction is valid up into the petahertz range ($10^{15}$ Hz).
+
+Better resistivity only helps so much at low frequencies, but at very high frequencies it can make a large difference. In the microwave region, items like waveguides can have a very thin layer of silver deposited on the outsides. The skin depth is already very small, so the 5\% boost to conductivity will help noticeably.	
+
+Litz wire is a set of insulated conductors specially braided to counteract the skin-effect-inducing magnetic fields. It will help you avoid the problems of skin effect, but it is expensive and not often used in smaller-scale power electronics. Large grid-scale electronics may have sufficiently-high efficiency requirements to prompt the usage of Litz wire.
+
+\subsection{Inductance}
+
+The inductance of conductors is probably even more of a nuisance than the skin effect is, at least with modern switching power converters. There are actually several types of inductance that manifest themselves. First is the innate self-inductance of a conductor. A conductor half a millimeter in diameter (about 24AWG) has a self-inductance of about 35nH per inch.
