@@ -1,1 +1,33 @@
 \section{Capacitors}
+
+There are a few major types of capacitors you'll encounter:
+
+\begin{itemize}
+\item \emph{Aluminum Electrolytic Capacitors -} These capacitorss are one of the two workhorses of power electronics. They have huge capacitances for their size (``volumetric capacity''). They can be found in a plethora of sizes and voltage ratings. One of their drawbacks, however, is the parasitic equivalent series resistance (ESR). They almost always have noticeable ESR, and that ESR is \underline{not} stable over time and temperature. You can easily get a 15x swing over lifespan and thermal range (worst at cold temps). This causes problems in converters with electrolytic output caps because the ESR term shows up in the converter transfer function, and not in a good way. (More on this later.) Still, if you need a huge amount of capacitance, these are probably where you'll turn to. They're often paired with other types of capacitors for effective filtering.
+\item \emph{Ceramic Capacitors -} These are the other type of the two workhorses of power electronics. They are in the middle ground of volumetric efficiency. They have really good (i.e. low) parasitic ESR and ESL (inductance). Tolerances and shifts over time/temp are decent. They are often use for high-frequency filtering and bypassing, and will often show up in the control circuits, too.
+\item \emph{Tantalum Capacitors -} These have a lower and more predictable ESR than aluminum caps, but they are very intolerant of overvoltage conditions: they blow up. Really. They turn into mini volcanos. That's why they are practically banned in automotive applications. You'll see them in industrial and consumer stuff, however.
+\item \emph{Film Capacitors -} % FINISH THIS SECTION
+\item \emph{Tantalum Polymer Capacitors -} Not tantalum. Tantalum \underline{polymer}. Different. These guys have amazing volumetric efficiency, super-stable and low ESR, and nearly non-existent capacitance derating. The downside? Cost. These bastards are \emph{expensive}. Many companies choose to drop a bunch of ceramics down instead, though some are running into space constraints and have to spring for the tantalum polymer caps. You can also find aluminum polymer caps, which are halfway between aluminum electrolytic and tantalum polymer (in most every aspect).
+\item \emph{Electrolytic Double-Layer Capacitors} More often called EDLC's, or SuperCapacitors, these things are unusual. The breakdown voltages are very small, with most topping out at 2.7V or so. However, the volumetric efficiency is astoundingly high. ESR decreases with case size, from worse-than-electrolytic at small SMT sizes to better-than-ceramic when you get to units as large as a beer can. Be careful with these, as the larger ones have scarily-large current capabilities.
+\end{itemize}
+
+
+
+In addition to voltage ratings, you'll often see temperature ratings such as ``X5R'' or ``Y7S'' and whatnot on ceramic capacitors. The full list for class 2 ceramic caps is given in Table \ref{class2_cer_ratings}. The first letter is the lower temperature rating. The second number is the upper temperature rating. The last digit is the maximum swing in capacitance allowable due to temperature. Note the point ``swing \ldots due to temperature.'' This is in addition to innate tolerance and voltage derating.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|c}
+Low Temp & High Temp & Temp Tolerance \\
+\hline
+X = $-55^{\circ}$C & 4 = $+65^{\circ}$C & P = $\pm$10\% \\
+Y = $-30^{\circ}$C & 5 = $+85^{\circ}$C & R = $\pm$15\% \\
+Z = $+10^{\circ}$C & 6 = $+105^{\circ}$C & S = $\pm$22\% \\
+~ & 7 = $+125^{\circ}$C & T = +22\%, -33\% \\
+~ & 8 = $+150^{\circ}$C & U = +22\%, -56\% \\
+~ & 9 = $+200^{\circ}$C & V = +22\%, -82\% \\
+\end{tabular}
+\caption{Class 2 Ceramic Capacitor Ratings}\label{class2_cer_ratings}
+\end{table}
+
+There is another class (class 1) of ceramic capacitors with the label ``NP0'' or ``C0G''. These have different material construction that results in lower volumetric efficiency but excellent tolerance and stability over voltage \& temperature. Typical tolerance swings are 30ppm$/^{\circ}$C.
