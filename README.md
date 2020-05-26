@@ -15,7 +15,8 @@ At some point, admittedly, the student will need to access advanced tools to con
 ## Content Guidelines
 
 All software used to create this should be FOSS-compliant.
-*KiCAD – circuit diagrams and PCB examples
+
+* KiCAD – circuit diagrams and PCB examples
 * GNU Octave – general technical computation, frequency analysis
 * TeXworks – writing tool, using pdfLaTex only (this may change to include bibliography tools)
 * InkScape – graphics
